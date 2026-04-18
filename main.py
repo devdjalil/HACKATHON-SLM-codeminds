@@ -92,8 +92,8 @@ def extract_json_pairs(raw: str):
 async def health_check():
     return {"status": "online", "collection_id": COLLECTION_ID}
 
-@app.post("/ask", response_model=CodeResponse)
-async def ask_assistant(req: QuestionRequest):
+@app.post("/chat", response_model=CodeResponse)
+async def chat(req: QuestionRequest):
     """Real-time Polars code generation based on user question."""
     try:
         context_list = retrieve_and_rerank(req.question, top_n=req.top_n)
